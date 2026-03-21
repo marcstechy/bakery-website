@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>კასრაძეები - საკონდიტრო მაღაზია</title>
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'LGVBebasNeue';
+  src: url('https://typeface.ge/ka/font/502/download') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --brown: #2A0E0B;
+  --gold: #D0985B;
+  --cream: #FFF1E8;
+  --warm-white: #FDFAF7;
+  --text-muted: #7A5C4F;
+  --border: rgba(42,14,11,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; }
+
+/* NAVBAR */
+nav {
+  background: var(--brown);
+  position: sticky; top: 0; z-index: 1000;
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+  box-shadow: 0 2px 24px rgba(42,14,11,0.35);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logo-icon {
+  width: 38px; height: 38px;
+  background: var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brown); font-size: 20px; flex-shrink: 0;
+}
+.logo-text {
+  font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: 20px; font-weight: 700; color: var(--cream); letter-spacing: 1.5px;
+}
+.logo-text span { color: var(--gold); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  color: rgba(255,241,232,0.72); text-decoration: none;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+  transition: color 0.25s; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-links a i { font-size: 16px; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-right { display: flex; align-items: center; gap: 4px; }
+.nav-icon-btn {
+  background: none; border: none; color: rgba(255,241,232,0.8); cursor: pointer;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; transition: all 0.2s; position: relative;
+}
+.nav-icon-btn:hover { color: var(--gold); background: rgba(208,152,91,0.1); }
+.cart-badge {
+  position: absolute; top: 2px; right: 2px;
+  background: var(--gold); color: var(--brown);
+  font-size: 9px; font-weight: 700;
+  width: 16px; height: 16px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-signin {
+  border: 1.5px solid var(--gold); color: var(--gold); background: transparent;
+  padding: 8px 18px; border-radius: 30px;
+  font-size: 13px; font-family: 'Jost', sans-serif; font-weight: 500;
+  cursor: pointer; transition: all 0.25s; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px; margin-left: 6px;
+}
+.btn-signin i { font-size: 16px; }
+.btn-signin:hover { background: var(--gold); color: var(--brown); }
+.hamburger {
+  display: none; background: none; border: none;
+  cursor: pointer; color: var(--cream); font-size: 28px;
+  align-items: center; justify-content: center;
+}
+
+/* CATEGORY BAR */
+.cat-bar {
+  background: var(--warm-white); border-bottom: 1px solid var(--border);
+  padding: 0 5%; display: flex; overflow-x: auto; scrollbar-width: none;
+}
+.cat-bar::-webkit-scrollbar { display: none; }
+.cat-item {
+  padding: 14px 18px; font-size: 13px; font-weight: 500; letter-spacing: 0.4px;
+  color: var(--text-muted); cursor: pointer; white-space: nowrap;
+  border-bottom: 2.5px solid transparent; transition: all 0.25s;
+  text-transform: uppercase; display: flex; align-items: center; gap: 7px;
+}
+.cat-item i { font-size: 16px; }
+.cat-item:hover { color: var(--brown); border-color: var(--gold); }
+.cat-item.active { color: var(--brown); border-color: var(--gold); font-weight: 600; }
+
+/* HERO */
+.hero {
+  background: var(--brown); padding: 60px 5% 50px;
+  display: flex; align-items: center; gap: 40px;
+  position: relative; overflow: hidden; min-height: 280px;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D0985B' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-text { position: relative; z-index: 1; flex: 1; }
+.breadcrumb {
+  font-size: 13px; color: rgba(255,241,232,0.45); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 6px;
+}
+.breadcrumb a { color: rgba(255,241,232,0.45); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb i { font-size: 13px; }
+.hero h1 {
+  font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: clamp(36px, 6vw, 72px); font-weight: 700;
+  color: var(--cream); line-height: 1.05; letter-spacing: 1px;
+}
+.hero h1 span { color: var(--gold); }
+.hero-desc {
+  margin-top: 16px; font-size: 15px; color: rgba(255,241,232,0.6);
+  max-width: 480px; line-height: 1.6;
+}
+.hero-badges { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 12px; max-width: 280px; }
+.hero-badge {
+  background: rgba(208,152,91,0.12); border: 1px solid rgba(208,152,91,0.28);
+  color: var(--gold); padding: 10px 18px; border-radius: 30px;
+  font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; gap: 7px;
+}
+.hero-badge i { font-size: 16px; }
+
+/* SECTION */
+.section { padding: 52px 5%; }
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 36px; gap: 16px; flex-wrap: wrap;
+}
+.section-title {
+  font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: clamp(26px, 4vw, 40px); font-weight: 700;
+  color: var(--brown); letter-spacing: 0.5px;
+  position: relative; display: inline-block;
+}
+.section-title::after {
+  content: ''; display: block; width: 50px; height: 3px;
+  background: var(--gold); margin-top: 6px; border-radius: 2px;
+}
+.sort-filter { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-btn {
+  border: 1.5px solid var(--border); background: var(--warm-white);
+  color: var(--text-muted); padding: 8px 14px; border-radius: 20px;
+  font-size: 13px; font-family: 'Jost', sans-serif; cursor: pointer;
+  transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+}
+.filter-btn i { font-size: 15px; }
+.filter-btn:hover, .filter-btn.active { background: var(--brown); color: var(--cream); border-color: var(--brown); }
+
+/* PRODUCT GRID */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.product-card {
+  background: var(--warm-white); border-radius: 20px;
+  padding: 24px 20px 20px; border: 1px solid var(--border);
+  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  position: relative; overflow: visible; cursor: pointer;
+  display: flex; flex-direction: column;
+  animation: fadeInUp 0.5s ease both;
+}
+.product-card::before {
+  content: ''; position: absolute; inset: 0; border-radius: 20px;
+  background: linear-gradient(135deg, rgba(208,152,91,0.06) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(42,14,11,0.13); border-color: rgba(208,152,91,0.3); }
+.product-card:hover::before { opacity: 1; }
+.product-img-wrap {
+  width: 160px; height: 160px; margin: -10px auto 18px;
+  background: transparent; flex-shrink: 0;
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.product-img-wrap img {
+  width: 160px; height: 160px; object-fit: contain;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 12px 24px rgba(42,14,11,0.18));
+}
+.product-card:hover .product-img-wrap img {
+  transform: scale(1.10) translateY(-6px);
+  filter: drop-shadow(0 20px 32px rgba(42,14,11,0.24));
+}
+.product-badge {
+  position: absolute; top: 0; right: -8px;
+  background: var(--gold); color: var(--brown);
+  font-size: 10px; font-weight: 700; padding: 4px 9px;
+  border-radius: 20px; text-transform: uppercase;
+  letter-spacing: 0.4px; z-index: 2; white-space: nowrap;
+  display: flex; align-items: center; gap: 4px;
+}
+.product-badge i { font-size: 12px; }
+.product-stars { display: flex; align-items: center; gap: 2px; margin-bottom: 4px; }
+.star { color: var(--gold); font-size: 13px; }
+.star.empty { color: #ddd; }
+.reviews-count { font-size: 11px; color: var(--text-muted); margin-left: 5px; }
+.product-price {
+  font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: 30px; font-weight: 700; color: var(--brown);
+  margin-bottom: 4px; line-height: 1; letter-spacing: 0.5px;
+  display: flex; align-items: baseline; gap: 6px;
+}
+.product-price .currency { font-size: 18px; }
+.price-old { font-size: 14px; color: var(--text-muted); text-decoration: line-through; font-family: 'Jost', sans-serif; font-weight: 400; }
+.product-name {
+  font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: 17px; font-weight: 700; color: var(--brown);
+  margin-bottom: 5px; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.product-meta { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.product-meta i { font-size: 13px; color: var(--gold); }
+.product-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; flex: 1; margin-bottom: 18px; }
+.product-actions { display: flex; align-items: center; gap: 10px; margin-top: auto; }
+.wishlist-btn {
+  width: 40px; height: 40px; border: 1.5px solid var(--border);
+  border-radius: 50%; background: none; color: var(--text-muted);
+  cursor: pointer; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.wishlist-btn:hover { background: #ffecec; border-color: #ff8888; color: #e03030; }
+.wishlist-btn.active { background: #ffecec; border-color: #e03030; color: #e03030; }
+.add-cart-btn {
+  flex: 1; background: var(--brown); color: var(--cream);
+  border: none; border-radius: 30px; padding: 11px 16px;
+  font-size: 13px; font-family: 'Jost', sans-serif; font-weight: 600;
+  letter-spacing: 0.5px; cursor: pointer; transition: all 0.25s;
+  text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 7px;
+}
+.add-cart-btn i { font-size: 16px; }
+.add-cart-btn:hover { background: var(--gold); color: var(--brown); }
+
+/* PAGINATION */
+.pagination-row { display: flex; align-items: center; justify-content: space-between; margin-top: 40px; flex-wrap: wrap; gap: 16px; }
+.pagination { display: flex; gap: 8px; }
+.page-btn {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1.5px solid var(--border); background: var(--warm-white);
+  color: var(--brown); font-size: 14px; font-family: 'Jost', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.page-btn:hover, .page-btn.active { background: var(--gold); color: var(--brown); border-color: var(--gold); font-weight: 700; }
+.show-more-btn {
+  border: 1.5px solid var(--gold); color: var(--gold); background: none;
+  padding: 10px 24px; border-radius: 30px; font-size: 14px;
+  font-family: 'Jost', sans-serif; font-weight: 500; cursor: pointer;
+  transition: all 0.25s; display: flex; align-items: center; gap: 7px;
+}
+.show-more-btn i { font-size: 16px; }
+.show-more-btn:hover { background: var(--gold); color: var(--brown); }
+.products-count { font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+.products-count i { font-size: 15px; color: var(--gold); }
+
+/* SUBSCRIPTION BANNER */
+.sub-banner {
+  background: var(--brown); padding: 64px 5%;
+  display: flex; gap: 48px; align-items: center;
+  position: relative; overflow: hidden; flex-wrap: wrap;
+}
+.sub-banner::before {
+  content: ''; position: absolute; right: -100px; top: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(208,152,91,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.sub-banner::after {
+  content: ''; position: absolute; left: -80px; bottom: -80px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(208,152,91,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.sub-text { flex: 1; min-width: 280px; position: relative; z-index: 1; }
+.sub-badge {
+  width: 64px; height: 64px; background: var(--gold); color: var(--brown);
+  font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: 20px; font-weight: 800; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; box-shadow: 0 4px 20px rgba(208,152,91,0.4); letter-spacing: 0.5px;
+}
+.sub-text h2 {
+  font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: clamp(24px, 4vw, 38px); font-weight: 700;
+  color: var(--cream); line-height: 1.15; margin-bottom: 16px; letter-spacing: 0.5px;
+}
+.sub-text h2 span { color: var(--gold); }
+.sub-text p { font-size: 14px; color: rgba(255,241,232,0.58); line-height: 1.7; max-width: 420px; }
+.sub-form {
+  background: var(--cream); border-radius: 20px; padding: 32px 28px;
+  min-width: 280px; max-width: 360px; width: 100%;
+  position: relative; z-index: 1;
+}
+.sub-form h3 {
+  font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: 18px; font-weight: 700; color: var(--brown);
+  margin-bottom: 20px; text-align: center; text-transform: uppercase;
+  letter-spacing: 0.8px; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.sub-form h3 i { font-size: 20px; color: var(--gold); }
+.form-field { margin-bottom: 12px; position: relative; }
+.form-field i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 17px; }
+.form-field input {
+  width: 100%; border: 1.5px solid var(--border);
+  background: var(--warm-white); border-radius: 10px;
+  padding: 12px 14px 12px 42px;
+  font-size: 14px; font-family: 'Jost', sans-serif;
+  color: var(--brown); outline: none; transition: border-color 0.2s;
+}
+.form-field input::placeholder { color: var(--text-muted); }
+.form-field input:focus { border-color: var(--gold); }
+.privacy-row {
+  display: flex; align-items: flex-start; gap: 8px;
+  margin-bottom: 18px; font-size: 12px; color: var(--text-muted);
+}
+.privacy-row input[type=checkbox] { accent-color: var(--gold); margin-top: 3px; flex-shrink: 0; }
+.subscribe-btn {
+  width: 100%; background: var(--gold); color: var(--brown);
+  border: none; border-radius: 30px; padding: 14px;
+  font-size: 14px; font-family: 'Jost', sans-serif; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer;
+  transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.subscribe-btn i { font-size: 18px; }
+.subscribe-btn:hover { background: var(--brown); color: var(--cream); }
+
+/* FOOTER */
+footer { background: #1a0907; padding: 56px 5% 28px; color: rgba(255,241,232,0.55); }
+.footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3,1fr); gap: 40px; margin-bottom: 48px; }
+.footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 16px; }
+.footer-socials { display: flex; gap: 10px; margin-top: 20px; }
+.social-link {
+  width: 36px; height: 36px; border: 1.5px solid rgba(255,241,232,0.15);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: rgba(255,241,232,0.45); text-decoration: none; font-size: 17px; transition: all 0.2s;
+}
+.social-link:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col h4 {
+  color: var(--cream); font-family: 'LGVBebasNeue', 'Jost', sans-serif;
+  font-size: 16px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  color: rgba(255,241,232,0.5); text-decoration: none; font-size: 13.5px;
+  transition: color 0.2s; display: flex; align-items: center; gap: 8px;
+}
+.footer-col ul li a i { font-size: 15px; color: var(--gold); flex-shrink: 0; }
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13.5px; }
+.footer-contact-item i { color: var(--gold); font-size: 17px; margin-top: 1px; flex-shrink: 0; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,241,232,0.08); padding-top: 24px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px;
+}
+.footer-bottom-links { display: flex; gap: 20px; }
+.footer-bottom-links a { color: rgba(255,241,232,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-bottom-links a:hover { color: var(--gold); }
+
+/* MOBILE DRAWER */
+.mobile-drawer {
+  position: fixed; top: 0; left: 0; width: 290px; height: 100%;
+  background: var(--brown); z-index: 2000;
+  transform: translateX(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  display: flex; flex-direction: column; padding: 24px; overflow-y: auto;
+}
+.mobile-drawer.open { transform: translateX(0); }
+.drawer-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 1999; opacity: 0; pointer-events: none; transition: opacity 0.35s;
+}
+.drawer-overlay.open { opacity: 1; pointer-events: auto; }
+.drawer-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+.drawer-close { background: none; border: none; color: rgba(255,241,232,0.7); font-size: 26px; cursor: pointer; display: flex; align-items: center; transition: color 0.2s; }
+.drawer-close:hover { color: var(--gold); }
+.drawer-nav { list-style: none; }
+.drawer-nav li { border-bottom: 1px solid rgba(255,241,232,0.07); }
+.drawer-nav li a {
+  display: flex; align-items: center; gap: 10px; padding: 15px 0;
+  color: rgba(255,241,232,0.75); text-decoration: none;
+  font-size: 15px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s;
+}
+.drawer-nav li a i { font-size: 18px; color: var(--gold); }
+.drawer-nav li a:hover { color: var(--gold); }
+.drawer-cats { margin-top: 24px; list-style: none; }
+.drawer-cats-title { font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; font-weight: 600; }
+.drawer-cats li { margin-bottom: 4px; }
+.drawer-cats li button {
+  background: none; border: none; color: rgba(255,241,232,0.55);
+  font-size: 14px; font-family: 'Jost', sans-serif; cursor: pointer;
+  padding: 7px 0; transition: color 0.2s;
+  display: flex; align-items: center; gap: 9px; width: 100%;
+}
+.drawer-cats li button i { font-size: 16px; color: var(--gold); }
+.drawer-cats li button:hover { color: var(--gold); }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--brown); color: var(--cream);
+  padding: 14px 20px; border-radius: 12px; font-size: 14px;
+  z-index: 3000; transform: translateY(80px); opacity: 0;
+  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  border-left: 4px solid var(--gold); max-width: 300px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  display: flex; align-items: center; gap: 10px;
+}
+.toast i { font-size: 20px; color: var(--gold); flex-shrink: 0; }
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.product-card:nth-child(1){animation-delay:.05s}
+.product-card:nth-child(2){animation-delay:.10s}
+.product-card:nth-child(3){animation-delay:.15s}
+.product-card:nth-child(4){animation-delay:.20s}
+.product-card:nth-child(5){animation-delay:.25s}
+.product-card:nth-child(6){animation-delay:.30s}
+.product-card:nth-child(7){animation-delay:.35s}
+.product-card:nth-child(8){animation-delay:.40s}
+.product-card:nth-child(9){animation-delay:.45s}
+
+/* RESPONSIVE */
+@media(max-width:1010px){.nav-links{display:none}.btn-signin{display:none}.hamburger{display:flex}}
+@media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}.sub-banner{flex-direction:column}.sub-form{max-width:100%}}
+@media(max-width:700px){.hero{flex-direction:column;text-align:center;padding:40px 5%}.hero-badges{max-width:100%;justify-content:center}.hero-desc{margin:12px auto 0}.products-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}.pagination-row{justify-content:center}.footer-grid{grid-template-columns:1fr;gap:28px}.footer-bottom{flex-direction:column;text-align:center}}
+@media(max-width:480px){.products-grid{grid-template-columns:1fr 1fr;gap:12px}.product-card{padding:16px 12px 14px}.product-img-wrap,.product-img-wrap img{width:120px;height:120px}.product-name{font-size:14px}.product-desc{display:none}}
+@media(max-width:360px){.products-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i class="uil uil-coffee"></i></div>
+      <span class="logo-text">კასრა<span>ძეები</span></span>
+    </a>
+    <button class="drawer-close" onclick="closeDrawer()"><i class="uil uil-times"></i></button>
+  </div>
+  <ul class="drawer-nav">
+    <li><a href="#" onclick="closeDrawer()"><i class="uil uil-estate"></i> მთავარი</a></li>
+    <li><a href="#products" onclick="closeDrawer()"><i class="uil uil-shopping-bag"></i> პროდუქცია</a></li>
+    <li><a href="#" onclick="closeDrawer()"><i class="uil uil-info-circle"></i> ჩვენს შესახებ</a></li>
+    <li><a href="#" onclick="closeDrawer()"><i class="uil uil-truck"></i> მიტანა</a></li>
+    <li><a href="#" onclick="closeDrawer()"><i class="uil uil-phone"></i> კონტაქტი</a></li>
+  </ul>
+  <ul class="drawer-cats">
+    <p class="drawer-cats-title">კატეგორიები</p>
+    <li><button onclick="filterCat('all');closeDrawer()"><i class="uil uil-apps"></i> ყველა</button></li>
+    <li><button onclick="filterCat('cake');closeDrawer()"><i class="uil uil-gift"></i> ტორტები</button></li>
+    <li><button onclick="filterCat('croissant');closeDrawer()"><i class="uil uil-star"></i> კრუასანი</button></li>
+    <li><button onclick="filterCat('muffin');closeDrawer()"><i class="uil uil-circle"></i> მაფინები</button></li>
+    <li><button onclick="filterCat('cheesecake');closeDrawer()"><i class="uil uil-heart"></i> ჩიზქეიქი</button></li>
+  </ul>
+</div>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon"><i class="uil uil-coffee"></i></div>
+    <span class="logo-text">კასრა<span>ძეები</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#"><i class="uil uil-estate"></i> მთავარი</a></li>
+    <li><a href="#products" class="active"><i class="uil uil-shopping-bag"></i> პროდუქცია</a></li>
+    <li><a href="#"><i class="uil uil-info-circle"></i> ჩვენს შესახებ</a></li>
+    <li><a href="#"><i class="uil uil-truck"></i> მიტანა</a></li>
+    <li><a href="#"><i class="uil uil-phone"></i> კონტაქტი</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn" title="ძებნა"><i class="uil uil-search"></i></button>
+    <button class="nav-icon-btn" title="კალათა" onclick="showToast('uil-shopping-cart','კალათა ცარიელია')">
+      <i class="uil uil-shopping-cart"></i>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+    <button class="btn-signin"><i class="uil uil-user"></i> შესვლა</button>
+    <button class="hamburger" onclick="openDrawer()"><i class="uil uil-bars"></i></button>
+  </div>
+</nav>
+
+<div class="cat-bar">
+  <div class="cat-item active"  onclick="filterCat('all',this)">       <i class="uil uil-apps"></i> ყველა</div>
+  <div class="cat-item"         onclick="filterCat('cake',this)">       <i class="uil uil-gift"></i> ტორტები</div>
+  <div class="cat-item"         onclick="filterCat('croissant',this)">  <i class="uil uil-star"></i> კრუასანი</div>
+  <div class="cat-item"         onclick="filterCat('muffin',this)">     <i class="uil uil-circle"></i> მაფინები</div>
+  <div class="cat-item"         onclick="filterCat('cheesecake',this)"> <i class="uil uil-heart"></i> ჩიზქეიქი</div>
+  <div class="cat-item"         onclick="filterCat('cookie',this)">     <i class="uil uil-pizza-slice"></i> ფუნთუშა</div>
+  <div class="cat-item"         onclick="filterCat('bread',this)">      <i class="uil uil-layer-group"></i> პური</div>
+  <div class="cat-item"         onclick="filterCat('candy',this)">      <i class="uil uil-flower"></i> ტკბილეული</div>
+</div>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="breadcrumb">
+      <a href="#">მთავარი</a>
+      <i class="uil uil-angle-right"></i>
+      <a href="#">პროდუქცია</a>
+      <i class="uil uil-angle-right"></i>
+      <span>ნამცხვრები</span>
+    </div>
+    <h1>სასიამოვნო<br><span>გემოთი</span> გაგახარებთ</h1>
+    <p class="hero-desc">ხელნაკეთი ნამცხვრები, ტორტები და ტკბილეული — ყოველ სპეციალურ მომენტისთვის.</p>
+  </div>
+  <div class="hero-badges">
+    <span class="hero-badge"><i class="uil uil-award"></i> ხელნაკეთი</span>
+    <span class="hero-badge"><i class="uil uil-leaf"></i> ბუნებრივი</span>
+    <span class="hero-badge"><i class="uil uil-truck"></i> მიტანა</span>
+    <span class="hero-badge"><i class="uil uil-heart"></i> სიყვარულით</span>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="section-header">
+    <h2 class="section-title" id="sectionTitle">ყველა პროდუქტი</h2>
+    <div class="sort-filter">
+      <button class="filter-btn active" onclick="sortProducts('popular',this)"><i class="uil uil-fire"></i> პოპულარული</button>
+      <button class="filter-btn"        onclick="sortProducts('price_asc',this)"><i class="uil uil-arrow-up"></i> ფასი</button>
+      <button class="filter-btn"        onclick="sortProducts('price_desc',this)"><i class="uil uil-arrow-down"></i> ფასი</button>
+      <button class="filter-btn"        onclick="sortProducts('new',this)"><i class="uil uil-tag-alt"></i> ახალი</button>
+    </div>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+  <div class="pagination-row">
+    <div class="pagination">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+    </div>
+    <button class="show-more-btn" onclick="showToast('uil-sync','მეტი პროდუქტი იტვირთება...')">
+      <i class="uil uil-plus-circle"></i> მეტის ნახვა
+    </button>
+    <p class="products-count"><i class="uil uil-list-ul"></i> <span id="productsCount">ნაჩვენებია 9 / 341</span></p>
+  </div>
+</section>
+
+<div class="sub-banner">
+  <div class="sub-text">
+    <div class="sub-badge">15%</div>
+    <h2>ფასდაკლება<br><span>პირველ შეკვეთაზე</span></h2>
+    <p>გამოიწერეთ ჩვენი ნიუსლეთერი და მიიღეთ 15% ფასდაკლება პირველ შეკვეთაზე. შეთავაზება შეზღუდულია!</p>
+  </div>
+  <div class="sub-form">
+    <h3><i class="uil uil-gift"></i> გამოიწერე &amp; დაზოგე</h3>
+    <div class="form-field"><i class="uil uil-user"></i><input type="text" placeholder="თქვენი სახელი"></div>
+    <div class="form-field"><i class="uil uil-envelope"></i><input type="email" placeholder="Email მისამართი"></div>
+    <div class="form-field"><i class="uil uil-phone"></i><input type="tel" placeholder="ტელეფონი (სურვილისამებრ)"></div>
+    <div class="privacy-row">
+      <input type="checkbox" id="privacy" checked>
+      <label for="privacy">კონფიდენციალობის პოლიტიკაზე ვეთანხმები</label>
+    </div>
+    <button class="subscribe-btn" onclick="handleSubscribe()"><i class="uil uil-check-circle"></i> გამოწერა</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="text-decoration:none">
+        <div class="logo-icon"><i class="uil uil-coffee"></i></div>
+        <span class="logo-text" style="color:var(--cream)">კასრა<span style="color:var(--gold)">ძეები</span></span>
+      </a>
+      <p>კასრაძეები — ყოველი ნამცხვარი სიყვარულით, ოჯახური ტრადიციებით გამომცხვარი თქვენთვის.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link"><i class="uil uil-instagram"></i></a>
+        <a href="#" class="social-link"><i class="uil uil-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="uil uil-youtube"></i></a>
+        <a href="#" class="social-link"><i class="uil uil-telegram-alt"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>კომპანია</h4>
+      <ul>
+        <li><a href="#"><i class="uil uil-estate"></i> მთავარი</a></li>
+        <li><a href="#"><i class="uil uil-cog"></i> სერვისები</a></li>
+        <li><a href="#"><i class="uil uil-truck"></i> მიტანა</a></li>
+        <li><a href="#"><i class="uil uil-phone"></i> კონტაქტი</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>მყიდველებისთვის</h4>
+      <ul>
+        <li><a href="#"><i class="uil uil-package"></i> მიტანა &amp; გადახდა</a></li>
+        <li><a href="#"><i class="uil uil-redo"></i> დაბრუნების პოლიტიკა</a></li>
+        <li><a href="#"><i class="uil uil-award"></i> სერთიფიკატი</a></li>
+        <li><a href="#"><i class="uil uil-map"></i> საიტის რუქა</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>კონტაქტი</h4>
+      <div class="footer-contact-item"><i class="uil uil-phone-alt"></i><span>+995 555 123 456</span></div>
+      <div class="footer-contact-item"><i class="uil uil-phone-alt"></i><span>+995 322 987 654</span></div>
+      <div class="footer-contact-item"><i class="uil uil-map-marker"></i><span>თბილისი, რუსთაველის 14</span></div>
+      <div class="footer-contact-item"><i class="uil uil-envelope"></i><span>kasradzeebi@bakery.ge</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 კასრაძეები საკონდიტრო. ყველა უფლება დაცულია.</p>
+    <div class="footer-bottom-links">
+      <a href="#">გამოყენების წესები</a>
+      <a href="#">კონფიდენციალობა</a>
+      <a href="#">ლიცენზია</a>
+    </div>
+    <p style="color:rgba(255,241,232,0.28)">www.kasradzeebi.ge</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast">
+  <i class="uil" id="toastIcon"></i>
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+var PRODUCTS = [
+  { id:1, name:'შოკოლადის ტორტი',      cat:'cake',       price:35.00, oldPrice:null,  stars:5, reviews:89,  meta:'320გ | 420კკალ',  desc:'ხუთ ფენიანი ნოტიო შოკოლადის ტორტი, კაკაოს კრემით, ნიგვზით და შოკოლადის გლაზურით.',  badge:'Hit',       badgeIcon:'uil-fire',       img:'img_cake.png',       isNew:false },
+  { id:2, name:'მარწყვის ჩიზქეიქი',    cat:'cheesecake', price:28.90, oldPrice:34.00, stars:5, reviews:63,  meta:'280გ | 380კკალ',  desc:'ნაზი მარწყვის ჩიზქეიქი კრემიანი ფენით, ახალი მარწყვით და ნაღების ვარდით.',          badge:'ახალი',     badgeIcon:'uil-tag-alt',    img:'img_cheesecake.png', isNew:true  },
+  { id:3, name:'ფრანგული კრუასანი',     cat:'croissant',  price:4.50,  oldPrice:null,  stars:4, reviews:201, meta:'95გ | 310კკალ',   desc:'ფენოვანი, ოქროსფერი, ხრაშუნა კრუასანი — ახალი კარაქით გამომცხვარი ყოველ დილა.',    badge:null,        badgeIcon:null,             img:'img_croissant.png',  isNew:false },
+  { id:4, name:'ლიმონის პაი',           cat:'cake',       price:22.00, oldPrice:null,  stars:4, reviews:37,  meta:'250გ | 360კკალ',  desc:'ლიმონის კრემის ნაჭერი ხრაშუნა ფუძეზე, ვანილის მერინგის გვირგვინით.',               badge:'ახალი',     badgeIcon:'uil-tag-alt',    img:'img_lemon.png',      isNew:true  },
+  { id:5, name:'მაფინი ბლუბერით',       cat:'muffin',     price:6.50,  oldPrice:7.50,  stars:5, reviews:120, meta:'110გ | 240კკალ',  desc:'ნოტიო, ფუმფულა მაფინი სავსე ახალი მოცვით — ყოველი ყლუპი სიამოვნებაა.',              badge:'ფავ',        badgeIcon:'uil-heart',      img:'img_muffin.png',     isNew:false },
+  { id:6, name:'ვანილის ეკლერი',        cat:'cake',       price:9.90,  oldPrice:null,  stars:5, reviews:143, meta:'120გ | 290კკალ',  desc:'კლასიკური ეკლერი ვანილის მდიდარი კრემით და შაქრის ფხვნილის ბალიშით.',               badge:'პოპ',        badgeIcon:'uil-award',      img:'img_eclair.png',     isNew:false },
+  { id:7, name:'ეკლერი ×2',             cat:'cake',       price:17.00, oldPrice:20.00, stars:5, reviews:58,  meta:'240გ | 580კკალ',  desc:'ორი ეკლერი — საუკეთესო არჩევანი ორისთვის! ვანილის კრემი, შაქრის ფხვნილი.',           badge:'Pack',       badgeIcon:'uil-gift',       img:'img_eclair.png',     isNew:false },
+  { id:8, name:'კრუასანი ×4',           cat:'croissant',  price:15.00, oldPrice:18.00, stars:5, reviews:77,  meta:'380გ | 1240კკალ', desc:'4 ახალი კრუასანი სახეხი ყუთში — სასაუზმე ან საჩუქარი.',                              badge:'საჩუქარი',   badgeIcon:'uil-gift',       img:'img_croissant.png',  isNew:false },
+  { id:9, name:'ჩიზქეიქი L',            cat:'cheesecake', price:42.00, oldPrice:null,  stars:5, reviews:29,  meta:'500გ | 680კკალ',  desc:'დიდი ზომის მარწყვის ჩიზქეიქი — სუფრაზე ოჯახის ყველა წევრისთვის.',                   badge:'Family',     badgeIcon:'uil-users-alt',  img:'img_cheesecake.png', isNew:true  }
+];
+
+var cartCount   = 0;
+var currentSort = 'popular';
+var currentCat  = 'all';
+var wishlistSet = {};
+
+function starsHTML(n) {
+  var h = '';
+  for (var i = 1; i <= 5; i++) {
+    h += '<span class="star' + (i > n ? ' empty' : '') + '">&#9733;</span>';
+  }
+  return h;
+}
+
+function renderProducts(data) {
+  var grid = document.getElementById('productsGrid');
+  var shown = Math.min(9, data.length);
+  document.getElementById('productsCount').textContent = 'ნაჩვენებია ' + shown + ' / 341';
+
+  if (!data.length) {
+    grid.innerHTML = '<p style="color:var(--text-muted);padding:40px 0;grid-column:1/-1;"><i class="uil uil-search-slash"></i> პროდუქტი ვერ მოიძებნა</p>';
+    return;
+  }
+
+  var html = '';
+  var list = data.slice(0, 9);
+  for (var i = 0; i < list.length; i++) {
+    var p = list[i];
+    var badgeHTML = p.badge
+      ? '<span class="product-badge"><i class="uil ' + p.badgeIcon + '"></i> ' + p.badge + '</span>'
+      : '';
+    var oldPriceHTML = p.oldPrice
+      ? '<span class="price-old">&#x20BE;' + p.oldPrice.toFixed(2) + '</span>'
+      : '';
+    var wished = wishlistSet[p.id];
+    var wIcon = wished ? 'uil-heart' : 'uil-heart-alt';
+    var wActive = wished ? ' active' : '';
+    var newTag = p.isNew ? ' &nbsp;<i class="uil uil-tag-alt"></i> ახალი' : '';
+
+    html += '<div class="product-card" style="animation-delay:' + (i * 0.06) + 's">';
+    html += '<div class="product-img-wrap">';
+    html += '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy">';
+    html += badgeHTML;
+    html += '</div>';
+    html += '<div class="product-stars">' + starsHTML(p.stars) + '<span class="reviews-count">' + p.reviews + ' შეფასება</span></div>';
+    html += '<div class="product-price"><span class="currency">&#x20BE;</span>' + p.price.toFixed(2).replace('.', ',') + oldPriceHTML + '</div>';
+    html += '<div class="product-name">' + p.name + '</div>';
+    html += '<div class="product-meta"><i class="uil uil-weight"></i>' + p.meta + newTag + '</div>';
+    html += '<div class="product-desc">' + p.desc + '</div>';
+    html += '<div class="product-actions">';
+    html += '<button class="wishlist-btn' + wActive + '" onclick="toggleWish(' + p.id + ',this)"><i class="uil ' + wIcon + '"></i></button>';
+    html += '<button class="add-cart-btn" onclick="addToCart(\'' + p.name.replace(/'/g, "\\'") + '\')"><i class="uil uil-cart-arrow-right"></i> კალათაში</button>';
+    html += '</div></div>';
+  }
+  grid.innerHTML = html;
+}
+
+function getFiltered() {
+  var data = [];
+  for (var i = 0; i < PRODUCTS.length; i++) {
+    if (currentCat === 'all' || PRODUCTS[i].cat === currentCat) data.push(PRODUCTS[i]);
+  }
+  if (currentSort === 'price_asc') data.sort(function(a,b){ return a.price - b.price; });
+  else if (currentSort === 'price_desc') data.sort(function(a,b){ return b.price - a.price; });
+  else if (currentSort === 'new') data.sort(function(a,b){ return b.isNew - a.isNew; });
+  else data.sort(function(a,b){ return b.reviews - a.reviews; });
+  return data;
+}
+
+function filterCat(cat, el) {
+  currentCat = cat;
+  var items = document.querySelectorAll('.cat-item');
+  for (var i = 0; i < items.length; i++) items[i].classList.remove('active');
+  if (el) el.classList.add('active');
+  var titles = { all:'ყველა პროდუქტი', cake:'ტორტები', cookie:'ფუნთუშები', bread:'პური / ცომეული', candy:'ტკბილეული', croissant:'კრუასანები', muffin:'მაფინები', cheesecake:'ჩიზქეიქი' };
+  document.getElementById('sectionTitle').textContent = titles[cat] || 'პროდუქტები';
+  renderProducts(getFiltered());
+}
+
+function sortProducts(s, el) {
+  currentSort = s;
+  var btns = document.querySelectorAll('.filter-btn');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+  if (el) el.classList.add('active');
+  renderProducts(getFiltered());
+}
+
+function addToCart(name) {
+  cartCount++;
+  document.getElementById('cartBadge').textContent = cartCount;
+  showToast('uil-check-circle', '"' + name + '" დაემატა კალათაში');
+}
+
+function toggleWish(id, btn) {
+  var icon = btn.querySelector('i');
+  if (wishlistSet[id]) {
+    delete wishlistSet[id];
+    icon.className = 'uil uil-heart-alt';
+    btn.classList.remove('active');
+    showToast('uil-heart-alt', 'სურვილების სიიდან წაიშალა');
+  } else {
+    wishlistSet[id] = true;
+    icon.className = 'uil uil-heart';
+    btn.classList.add('active');
+    showToast('uil-heart', 'სურვილების სიაში დაემატა');
+  }
+}
+
+function openDrawer() {
+  document.getElementById('mobileDrawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  document.getElementById('mobileDrawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function showToast(iconClass, msg) {
+  var t   = document.getElementById('toast');
+  var ico = document.getElementById('toastIcon');
+  var txt = document.getElementById('toastMsg');
+  ico.className = 'uil ' + iconClass;
+  txt.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(function(){ t.classList.remove('show'); }, 2800);
+}
+
+function handleSubscribe() {
+  showToast('uil-check-circle', 'გამოწერა წარმატებით დასრულდა! 15% კუპონი გამოგეგზავნათ.');
+}
+
+renderProducts(getFiltered());
+</script>
+</body>
+</html>
