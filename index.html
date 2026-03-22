@@ -141,6 +141,7 @@ nav {
 
 /* SECTION */
 .section { padding: 52px 5%; }
+.section.products-section { max-width: 1400px; margin-left: auto; margin-right: auto; box-sizing: border-box; }
 .section-header {
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 36px; gap: 16px; flex-wrap: wrap;
@@ -170,10 +171,8 @@ nav {
    ============================================ */
 .products-grid {
   display: grid;
-  /* fluid: never go below 140px per card, fill available space */
-  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  /* prevent any child from punching outside the viewport */
   width: 100%;
   overflow: hidden;
 }
@@ -468,6 +467,11 @@ footer { background: #1a0907; padding: 56px 5% 28px; color: rgba(255,241,232,0.5
    RESPONSIVE BREAKPOINTS
    ============================================ */
 
+/* Tablet ~1024px — 3 columns */
+@media(max-width:1100px){
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* Tablet */
 @media(max-width:1010px){
   .nav-links { display: none; }
@@ -478,6 +482,7 @@ footer { background: #1a0907; padding: 56px 5% 28px; color: rgba(255,241,232,0.5
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .sub-banner { flex-direction: column; }
   .sub-form { max-width: 100%; }
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* Large phone */
@@ -616,7 +621,7 @@ footer { background: #1a0907; padding: 56px 5% 28px; color: rgba(255,241,232,0.5
   </div>
 </section>
 
-<section class="section" id="products">
+<section class="section products-section" id="products">
   <div class="section-header">
     <h2 class="section-title" id="sectionTitle">ყველა პროდუქტი</h2>
     <div class="sort-filter">
@@ -701,7 +706,7 @@ footer { background: #1a0907; padding: 56px 5% 28px; color: rgba(255,241,232,0.5
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 კასრაძეები საკონდიტრო. ყველა უფლება დაცულია.</p>
+    <p>© 2025 კასრაძეები საკონდიტრო. ყველა უფლება დაცულია.</p>
     <div class="footer-bottom-links">
       <a href="#">გამოყენების წესები</a>
       <a href="#">კონფიდენციალობა</a>
